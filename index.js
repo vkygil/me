@@ -52,8 +52,12 @@ let PersonalData = Vue.component('PersonalData', {
     props: ['personaldata'],
     template: `
 <div class="col-12 sidebarLeft col-sm-3">
-    <div class="row">
+ 
+    <div class="row justify-content-center">
+    <div class="col col-6 col-md-12">
+
         <img class="sb-img profile" src="img.jpg" title="!!!!">
+    </div> 
     </div>
     <h5  style="white-space: pre-wrap">{{personaldata.intro}}</h5>
     <h2 class="font-weight-bold">{{personaldata.iam}}</h2>
@@ -162,13 +166,41 @@ window.addEventListener("load", function (event) {
     document.getElementById("app").classList.toggle('d-none');
 });
 
-function langChanged(el) {
-    console.log(el);
-    // if (el.checked) {
+var lastScrool = document.documentElement.scrollTop;
+function handleWorkClick(num) {
+    document.getElementById("workItemModal" + num).classList.toggle('item_open');
+    // document.body.style.top = `-${window.scrollY}px`;
 
-    // }
+    // document.body.style.overflow = "hidden"
+
+    const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
+    const body = document.body;
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}`;
 }
+function handleWorkClose(num) {
+    // lastScrool = document.documentElement.scrollTop;
+    // // document.getElementById("workItemFull").style.display = "none"
+    // document.getElementById("workItemModal").classList.toggle('item_open');
+    // document.body.style.overflowY = "auto"
+    // // window.scrollTo(0, lastScrool); 
+    // const scrollY = document.body.style.top;
+    // document.body.style.position = '';
+    // document.body.style.top = '';
+    // window.scrollTo(0, parseInt(scrollY || '0') * -1);
 
+    const body = document.body;
+    const scrollY = body.style.top;
+    body.style.position = '';
+    body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    document.getElementById("workItemModal" + num).classList.toggle('item_open');
+
+
+}
+window.addEventListener('scroll', () => {
+    document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
+});
 
 var color,
     letters = '0123456789ABCDEF'.split('')
