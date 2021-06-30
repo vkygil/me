@@ -67,6 +67,20 @@ let PersonalData = Vue.component('PersonalData', {
     <span><i class="bi bi-translate"></i> {{personaldata.languages}}</span>
     <br>
     <span><i class="bi bi-envelope"></i> {{personaldata.email}}</span>
+
+<div style=" display: grid; ">
+
+    <label id="txtMoreInfo" class="pointer" for="show">more info...▼</label><span class="pointer"
+        id="iconMoreInfo"></span>
+    <div id="content">
+        <span><i class="bi bi-person-fill"></i> Age 20</span>
+        <br>
+        <span><i class="bi bi-check"></i> Work permit in Spain</span>
+        <br>
+        <span><i class="bi bi-bicycle"></i> Driving Licence (B)</span>
+        <br>
+    </div>
+</div>
 </div>
             `
 })
@@ -195,7 +209,6 @@ function handleWorkClose(num) {
     body.style.top = '';
     window.scrollTo(0, parseInt(scrollY || '0') * -1);
     document.getElementById("workItemModal" + num).classList.toggle('item_open');
-
 
 }
 window.addEventListener('scroll', () => {

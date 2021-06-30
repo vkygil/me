@@ -40,9 +40,21 @@
                 <span><i class="bi bi-translate"></i> {personaldata.languages}}</span>
                 <br>
                 <span><i class="bi bi-envelope"></i> {personaldata.email}}</span>
+                <div>
+                    <input type=checkbox id="show">
+                    <label class="pointer" for="show">more info... </label><span class="pointer"
+                        id="iconMoreInfo"></span>
+                    <div id="content">
+                        <span><i class="bi bi-person-fill"></i> Age 20</span>
+                        <br>
+                        <span><i class="bi bi-check"></i> Work permit in Spain</span>
+                        <br>
+                    </div>
+                </div>
             </div> -->
             <Personal-data v-if="languageSpa" v-bind:personaldata="spa.leftSidebar"></Personal-data>
             <Personal-data v-else v-bind:personaldata="eng.leftSidebar"></Personal-data>
+
             <div class="col sidebarRight">
 
                 <br>
@@ -58,8 +70,9 @@
 
                 <div class=" sidebar-section">
                     <div style="padding: 0;">
-                        <h1 v-if="languageSpa" class="title">{{spa.skills}} <i class="bi bi-keyboard"></i></h1>
-                        <h1 v-else class="title">{{eng.skills}} <i class="bi bi-keyboard"></i> </h1>
+                        <h1 v-if="languageSpa" class="title" id="skillTitle">{{spa.skills}} <i
+                                class="bi bi-keyboard"></i></h1>
+                        <h1 v-else class="title" id="skillTitle">{{eng.skills}} <i class="bi bi-keyboard"></i> </h1>
                     </div>
                     <div class="all-skill-group">
                         <!-- <div class="skill-group">
